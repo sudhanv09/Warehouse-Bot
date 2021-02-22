@@ -1,0 +1,55 @@
+<?xml version='1.0'?>
+
+<!-- urdf: unified robot description format -->
+
+<robot name="warehousebot">
+
+    <!-- materials color description -->
+    <!-- <xacro:include filename="$(find campusrover_description)/urdf/materials.xacro" /> -->
+
+    <!-- Link Define -->
+    <link name="base_link">
+        <visual>
+            <!-- rpy: roll, pitch, yaw ; xyz; x, y, z position -->
+            <origin rpy="0.0 0 0.0" xyz="0.0 0.0 0"/>
+            <!-- describe robot's appearance -->
+            <geometry>
+                <mesh filename="package://warehousebot_description/meshes/body.stl" scale="0.004 0.004 0.004"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <link name="rplidar_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" />
+            <geometry>
+                <cylinder length="0.001" radius="0.001" />
+            </geometry>
+            <!-- <material name="gray" /> -->
+        </visual>
+    </link>
+
+    <link name="scissor_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" />
+            <geometry>
+                <cylinder length="0.001" radius="0.001" />
+            </geometry>
+            <!-- <material name="gray" /> -->
+        </visual>
+    </link>
+
+    <joint name="lidar_joint" type="fixed">
+        <parent link="base_link" />
+        <child link="rplidar_link" />
+        <origin xyz="0.0 0.0 0.42" rpy="0 0 0" />
+    </joint>
+
+    <joint name="scissor_joint" type="fixed">
+        <parent link="base_link" />
+        <child link="scissor_link" />
+        <origin xyz=" 0.0 -0.5 0.7" rpy="0 0 0" />
+    </joint>
+
+
+</robot>

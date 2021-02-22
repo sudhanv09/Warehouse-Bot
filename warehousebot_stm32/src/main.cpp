@@ -1,5 +1,5 @@
-#include "ros/ros.h"
-#include "std_msgs/Int16.h"
+#include <ros.h>
+#include <std_msgs/Int16.h>
 
 #define ENCA 3
 #define ENCB 2
@@ -39,8 +39,7 @@ void readRighttEncoder()
     }
 }
 
-void setup()
-{
+void setup() {
     pinMode(ENCA, INPUT);
     pinMode(ENCB, INPUT);
     attachInterrupt(digitalPinToInterrupt(ENCA), readLeftEncoder, RISING);
@@ -50,8 +49,7 @@ void setup()
     //nh.advertise(pub_rightencoder);
 }
 
-void loop()
-{
+void loop() {
     leftencoder_msg.data = left_pos;
     //rightencoder_msg.data = readRighttEncoder(ENCB);
 
@@ -60,3 +58,4 @@ void loop()
 
     nh.spinOnce();
 }
+
