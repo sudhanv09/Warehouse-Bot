@@ -14,7 +14,7 @@
             <origin rpy="0.0 0 0.0" xyz="0.0 0.0 0"/>
             <!-- describe robot's appearance -->
             <geometry>
-                <mesh filename="package://warehousebot_description/meshes/body.stl" scale="0.004 0.004 0.004"/>
+                <mesh filename="package://warehousebot_description/meshes/body.dae" scale="5 5 5"/>
             </geometry>
         </visual>
     </link>
@@ -42,13 +42,13 @@
     <joint name="lidar_joint" type="fixed">
         <parent link="base_link" />
         <child link="rplidar_link" />
-        <origin xyz="0.0 0.0 0.42" rpy="0 0 0" />
+        <origin xyz="0.0 0.0 0.55" rpy="0 0 0" />
     </joint>
 
     <joint name="scissor_joint" type="fixed">
         <parent link="base_link" />
         <child link="scissor_link" />
-        <origin xyz=" 0.0 -0.5 0.7" rpy="0 0 0" />
+        <origin xyz=" 0.0 -0.65 0.9" rpy="0 0 0" />
     </joint>
 
 
