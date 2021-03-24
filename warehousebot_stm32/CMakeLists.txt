@@ -118,11 +118,8 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-  include/warehousebot_stm32
+  ${PROJECT_NAME}
   ${catkin_INCLUDE_DIRS}
-  include/warehousebot_stm32/Drivers/STM32F4xx_HAL_Driver/Inc
-  include/warehousebot_stm32/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy
-  include/warehousebot_stm32/Drivers/CMSIS/Device/ST/STM32F4xx/Include Drivers/CMSIS/Include
 )
 
 ## Declare a C++ library
@@ -138,7 +135,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(${PROJECT_NAME} src/main.cpp)
+# add_executable(${PROJECT_NAME} src/main.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the

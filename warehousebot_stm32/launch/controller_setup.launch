@@ -2,7 +2,7 @@
 
     
     <node pkg="rosserial_python" type="serial_node.py" name="rosserial" output="screen">
-        <param name="port" value="/dev/ttyUSB0" />
+        <param name="port" value="/dev/ttyACM0" />
         <param name="baud" value="57600" />
     </node>
 
@@ -11,6 +11,10 @@
         <remap from="motor_cmd" to="lmotor_cmd"/>
         <remap from="wheel_vtarget" to="lwheel_vtarget"/>
         <remap from="wheel_vel" to="lwheel_vel"/>
+
+        <rosparam param="Kp">1.0</rosparam>
+        <rosparam param="Ki">1.0</rosparam>
+        <rosparam param="Kd">0.001</rosparam>
     </node>
 
     <node pkg="differential_drive" type="pid_velocity.py" name="right_pid">
@@ -18,13 +22,17 @@
         <remap from="motor_cmd" to="rmotor_cmd"/>
         <remap from="wheel_vtarget" to="rwheel_vtarget"/>
         <remap from="wheel_vel" to="rwheel_vel"/>
+
+        <rosparam param="Kp">1.0</rosparam>
+        <rosparam param="Ki">1.0</rosparam>
+        <rosparam param="Kd">0.001</rosparam>
     </node>
 
     <node pkg="differential_drive" type="twist_to_motors.py" name="twist_to_motor" output="screen">
-        <rosparam param="base_width">0.1</rosparam>
+        <rosparam param="base_width">0.25</rosparam>
     </node>
 
     <node pkg="differential_drive" type="diff_tf.py" name="diff_tf" output="screen">
-        <rosparam param="base_width">0.1</rosparam>
+        <rosparam param="base_width">0.25</rosparam>
     </node>
 </launch>

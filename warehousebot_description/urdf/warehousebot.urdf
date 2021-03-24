@@ -14,7 +14,7 @@
             <origin rpy="0.0 0 0.0" xyz="0.0 0.0 0"/>
             <!-- describe robot's appearance -->
             <geometry>
-                <mesh filename="package://warehousebot_description/meshes/body.dae" scale="5 5 5"/>
+                <mesh filename="package://warehousebot_description/meshes/body_1.dae" scale="5 5 5"/>
             </geometry>
         </visual>
     </link>
