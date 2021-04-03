@@ -1,5 +1,2 @@
 warehousebot_stm32/.idea
-warehousebot_stm32/cmake-build-debug
-warehousebot_stm32/src/cmake-build-debug/
-warehousebot_stm32/src/CMakeLists.txt
-warehousebot_stm32/src/CMakeLists_template.txt
+warehousebot_stm32/build

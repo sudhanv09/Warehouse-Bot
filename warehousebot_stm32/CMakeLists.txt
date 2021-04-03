@@ -105,7 +105,7 @@ generate_messages(
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
- INCLUDE_DIRS include/warehousebot_stm32
+#  INCLUDE_DIRS include/warehousebot_stm32
  LIBRARIES warehousebot_stm32
  CATKIN_DEPENDS roscpp rospy std_msgs message_runtime
 #  DEPENDS system_lib
