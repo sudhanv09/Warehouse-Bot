@@ -1,4 +1,4 @@
-#!/usr/bin/python 3
+#!/usr/bin/env python
 
 import rospy
 from geometry_msgs.msg import Twist, Point
@@ -17,8 +17,9 @@ def odomCb(msg):
 
 rospy.init_node("controller")
 
-sub = rospy.Subscriber("/odom", Odometry, odomCb)
-pub = rospy.Publisher("/cmd_vel", Twist, queue_size=1)
+sub = rospy.Subscriber("/husky_velocity_controller/odom", Odometry, odomCb)
+pub = rospy.Publisher(
+    "/husky_velocity_controller/cmd_vel", Twist, queue_size=1)
 
 speed = Twist()
 rate = rospy.Rate(10)
