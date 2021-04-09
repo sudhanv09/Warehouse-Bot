@@ -1,31 +1,44 @@
 <launch>
 
+    <arg name="config_locks" default="$(find twist_mux)/config/twist_mux_locks.yaml"/>
+    <arg name="config_topics" default="$(find twist_mux)/config/twist_mux_topics.yaml"/>
+
+
     <node pkg="rosserial_python" type="serial_node.py" name="rosserial">
         <rosparam param="baud">57600</rosparam>
         <rosparam param="port">/dev/ttyACM0</rosparam>
     </node>        
 
+    <!-- <node pkg="twist_mux" type="twist_mux" name="twist_mux" output="screen">
+        <rosparam file="$(arg config_locks)" command="load"/>
+        <rosparam file="$(arg config_topics)" command="load"/>
+        <remap from="cmd_vel_out" to="cmd_vel"/>
+    </node> -->
+
     <node pkg="differential_drive" type="pid_velocity.py" name="lpid_vel">
-        <remap from="wheel" to="lwheel"/>
+        <remap from="wheel" to="left_wheel"/>
         <remap from="motor_cmd" to="lmotor_cmd"/>
         <remap from="wheel_vtarget" to="lwheel_vtarget"/>
         <remap from="wheel_vel" to="lwheel_vel"/>
-        <rosparam param="Kp">200</rosparam>
-        <rosparam param="Ki">200</rosparam>
+        <rosparam param="Kp">20</rosparam>
+        <rosparam param="Ki">1</rosparam>
         <rosparam param="Kd">0</rosparam>
     </node>
 
     <node pkg="differential_drive" type="pid_velocity.py" name="rpid_vel">
-        <remap from="wheel" to="rwheel"/>
+        <remap from="wheel" to="right_wheel"/>
         <remap from="motor_cmd" to="rmotor_cmd"/>
         <remap from="wheel_vtarget" to="rwheel_vtarget"/>
         <remap from="wheel_vel" to="rwheel_vel"/>
-        <rosparam param="Kp">200</rosparam>
-        <rosparam param="Ki">200</rosparam>
+        <rosparam param="Kp">20</rosparam>
+        <rosparam param="Ki">10</rosparam>
         <rosparam param="Kd">0</rosparam>
     </node>
 
     <node pkg="differential_drive" type="twist_to_motors.py" name="twist_to_motor" output="screen"/>
+
+    <node pkg="differential_drive" type="diff_tf.py" name="diff_tf" output="screen"/>
+
 
     
 </launch>

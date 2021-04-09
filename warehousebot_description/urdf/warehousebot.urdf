@@ -11,45 +11,46 @@
     <link name="base_link">
         <visual>
             <!-- rpy: roll, pitch, yaw ; xyz; x, y, z position -->
-            <origin rpy="0.0 0 0.0" xyz="0.0 0.0 0"/>
+            <origin rpy="300 0 0.0" xyz="0.0 0.0 0"/>
             <!-- describe robot's appearance -->
             <geometry>
-                <mesh filename="package://warehousebot_description/meshes/body_1.dae" scale="5 5 5"/>
+                <mesh filename="package://warehousebot_description/meshes/mob_base.dae" scale="5 5 5"/>
             </geometry>
         </visual>
     </link>
 
     <link name="rplidar_link">
         <visual>
-            <origin xyz="0.0 0.0 0.0" />
+            <origin xyz="0.0 0.2 0.05" />
             <geometry>
-                <cylinder length="0.001" radius="0.001" />
+                <cylinder length="0.08" radius="0.08" />
             </geometry>
-            <!-- <material name="gray" /> -->
         </visual>
     </link>
 
-    <link name="scissor_link">
+    <!-- <link name="scissor_link">
         <visual>
             <origin xyz="0.0 0.0 0.0" />
             <geometry>
                 <cylinder length="0.001" radius="0.001" />
             </geometry>
-            <!-- <material name="gray" /> -->
         </visual>
-    </link>
+    </link> -->
 
     <joint name="lidar_joint" type="fixed">
         <parent link="base_link" />
         <child link="rplidar_link" />
-        <origin xyz="0.0 0.0 0.55" rpy="0 0 0" />
+        <origin xyz="0.0 0.25 0.3" rpy="0 0 0" />
     </joint>
 
-    <joint name="scissor_joint" type="fixed">
+    <!-- <joint name="scissor_joint" type="fixed">
         <parent link="base_link" />
         <child link="scissor_link" />
         <origin xyz=" 0.0 -0.65 0.9" rpy="0 0 0" />
-    </joint>
+    </joint> -->
 
 
 </robot>
+
+
+

@@ -1,0 +1,7 @@
+<launch>
+    <include file="$(find warehousebot_stm32)/launch/controller_setup.launch"/>
+
+    <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop" output="screen">
+        <remap from="/cmd_vel" to="twist"/>
+    </node>        
+</launch>
