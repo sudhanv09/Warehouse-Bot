@@ -21,9 +21,9 @@
         <param name="controller_patience" value="15.0" />
     </node>
 
-    <!-- <node name="map_server" pkg="map_server" type="map_server" args="$(find warehousebot_simulation)/maps/third_floor.yaml" output="screen">
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find warehousebot_simulation)/maps/map.yaml" output="screen">
         <param name="frame_id" value="map"/>
-    </node> -->
+    </node>
 
     <node pkg="amcl" type="amcl" name="amcl" output="screen">
         <rosparam file="$(find warehousebot_simulation)/config/amcl_params.yaml" command="load" />
@@ -33,6 +33,6 @@
     </node>
 
     <!--change rviz filename-->
-    <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find warehousebot_simulation)/rviz/sim.rviz"/>  -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find warehousebot_simulation)/rviz/sim.rviz"/> 
 
 </launch>

@@ -1,0 +1,18 @@
+<launch>
+    <!-- <include file="$(find warehousebot_simulation)/launch/teleop.launch" /> -->
+    <include file="$(find warehousebot_stm32)/launch/controller_setup.launch" />
+    <include file="$(find warehousebot_description)/launch/display.launch" />
+    <include file="$(find rplidar_ros)/launch/rplidar.launch" />
+    
+    <node name="cartographer_node" pkg="cartographer_ros" type="cartographer_node" args="
+          -configuration_directory
+              $(find warehousebot_simulation)/config
+          -configuration_basename gbot_lidar_2d.lua" output="screen">
+    </node>
+
+    <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros" type="cartographer_occupancy_grid_node" args="-resolution 0.05" />
+
+    <node pkg="rviz" type="rviz" name="show_rviz" args="-d $(find warehousebot_simulation)/rviz/map_viz.rviz"/>
+    
+
+</launch>
