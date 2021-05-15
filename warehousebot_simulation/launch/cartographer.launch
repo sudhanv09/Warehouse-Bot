@@ -1,5 +1,5 @@
 <launch>
-    <!-- <include file="$(find warehousebot_simulation)/launch/teleop.launch" /> -->
+
     <include file="$(find warehousebot_stm32)/launch/controller_setup.launch" />
     <include file="$(find warehousebot_description)/launch/display.launch" />
     <include file="$(find rplidar_ros)/launch/rplidar.launch" />
@@ -10,13 +10,10 @@
         <arg name="pub_map_odom_transform" value="true"/>
     </include>
 
-    <include file="$(find hector_geotiff_launch)/launch/geotiff_mapper.launch">
+    <include file="$(find hector_geotiff)/launch/geotiff_mapper.launch">
         <arg name="trajectory_source_frame_name" value="scanmatcher_frame"/>
         <arg name="map_file_path" value="$(find warehousebot_simulation)/map"/>
     </include>
 
-    <node name="map_server" pkg="map_server" type="map_server" args="$(find warehousebot_simulation)/maps/mymap.yaml" output="screen">
-        <param name="frame_id" value="map"/>
-    </node>
-
+    <node pkg="tf" type="static_transform_publisher" name="base_link_laser_broadcaster" args="0 0 0 0 0 0 base_link laser 100"/>
 </launch>

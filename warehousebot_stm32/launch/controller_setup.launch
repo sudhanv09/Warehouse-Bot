@@ -37,8 +37,8 @@
         <remap from="rwheel_ticks" to="right_wheel"/>
         <remap from="lwheel_rate" to="lwheel_vel"/>
         <remap from="rwheel_rate" to="rwheel_vel"/>
-        <remap from="ticks_per_meter" to="ticks_meter"/>
-        <remap from="wheel_separation" to="base_width"/>
+        <remap from="~ticks_per_meter" to="ticks_meter"/>
+        <remap from="~wheel_separation" to="base_width"/>
 
         <rosparam param="base_width">0.3</rosparam>
     </node>
