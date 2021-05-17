@@ -11,7 +11,7 @@
         </visual>
     </link>
 
-    <link name="rplidar_link">
+    <link name="laser">
         <visual>
             <origin xyz="0.0 0.2 0.05" />
             <geometry>
@@ -20,9 +20,14 @@
         </visual>
     </link>
 
+<<<<<<< HEAD
     <joint name="lidar_joint" type="fixed">
+=======
+
+    <joint name="laser_join" type="fixed">
+>>>>>>> ccae314afd81b335f42308637f435e0dd88684e8
         <parent link="base_link" />
-        <child link="rplidar_link" />
+        <child link="laser" />
         <origin xyz="0.0 0.25 0.3" rpy="0 0 0" />
     </joint>
 
