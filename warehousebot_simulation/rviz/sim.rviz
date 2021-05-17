@@ -5,7 +5,6 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
-        - /Map1/Status1
         - /Local Planner1
         - /Global Planner1
         - /Robot1
@@ -224,22 +223,13 @@ Visualization Manager:
           Frame Timeout: 15
           Frames:
             All Enabled: true
-            base_link:
-              Value: true
-            odom:
-              Value: true
-            rplidar_link:
-              Value: true
           Marker Scale: 1
           Name: TF
           Show Arrows: true
           Show Axes: true
           Show Names: true
           Tree:
-            odom:
-              base_link:
-                rplidar_link:
-                  {}
+            {}
           Update Interval: 0
           Value: true
         - Angle Tolerance: 0.10000000149011612
@@ -282,7 +272,7 @@ Visualization Manager:
   Global Options:
     Background Color: 255; 255; 255
     Default Light: true
-    Fixed Frame: base_link
+    Fixed Frame: map
     Frame Rate: 30
   Name: root
   Tools:

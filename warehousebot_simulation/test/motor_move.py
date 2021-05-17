@@ -17,9 +17,8 @@ def odomCb(msg):
 
 rospy.init_node("controller")
 
-sub = rospy.Subscriber("/husky_velocity_controller/odom", Odometry, odomCb)
-pub = rospy.Publisher(
-    "/husky_velocity_controller/cmd_vel", Twist, queue_size=1)
+sub = rospy.Subscriber("/odom", Odometry, odomCb)
+pub = rospy.Publisher("/twist", Twist, queue_size=1)
 
 speed = Twist()
 rate = rospy.Rate(10)

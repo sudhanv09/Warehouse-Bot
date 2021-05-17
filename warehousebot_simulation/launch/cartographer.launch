@@ -1,10 +1,8 @@
 <launch>
-    <!-- <include file="$(find warehousebot_simulation)/launch/teleop.launch" /> -->
-    <include file="$(find warehousebot_stm32)/launch/controller_setup.launch" />
-    <include file="$(find warehousebot_description)/launch/display.launch" />
-    <include file="$(find rplidar_ros)/launch/rplidar.launch" />
     
-    <include file="$(find hector_mapping)/launch/mapping_default.launch">
+<!-- Hector Node -->    
+
+    <!-- <include file="$(find hector_mapping)/launch/mapping_default.launch">
         <arg name="base_frame" value="base_link"/>
         <arg name="odom_frame" value="odom"/>
         <arg name="pub_map_odom_transform" value="true"/>
@@ -17,6 +15,15 @@
 
     <node name="map_server" pkg="map_server" type="map_server" args="$(find warehousebot_simulation)/maps/mymap.yaml" output="screen">
         <param name="frame_id" value="map"/>
+    </node> -->
+
+
+<!-- Cartographer Node-->
+
+    <node pkg="cartographer_ros" type="cartographer_node" name="cartographer_node" args="-configuration_directory $(find warehousebot_simulation)/config
+              -configuration_basename carto_config.lua" output="screen">
+        <remap from="/imu" to="/flat_imu"/>
     </node>
 
+    <node pkg="cartographer_ros" type="cartographer_occupancy_grid_node" name="cartographer_occupancy_grid_node" args="-resolution 0.05" />
 </launch>

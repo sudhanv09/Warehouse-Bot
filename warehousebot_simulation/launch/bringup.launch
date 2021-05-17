@@ -1,0 +1,15 @@
+<launch>
+
+    <arg name="teleop" default="false"/>
+
+    <group if="$(arg foo)">
+        <include file="$(find warehousebot_simulation)/launch/teleop.launch" />
+        <include file="$(find warehousebot_description)/launch/display.launch" />
+        <include file="$(find rplidar_ros)/launch/rplidar.launch" />
+    </group>
+
+    <include file="$(find warehousebot_stm32)/launch/controller_setup.launch.launch" />
+    <include file="$(find warehousebot_description)/launch/display.launch" />
+    <include file="$(find rplidar_ros)/launch/rplidar.launch" />
+
+</launch>
