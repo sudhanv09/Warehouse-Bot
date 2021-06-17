@@ -1,5 +1,7 @@
 <launch>
 
+    <include file="$(find warehousebot_simulation)/launch/cartographer.launch"/>
+
     <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
         <rosparam file="$(find warehousebot_simulation)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
         <rosparam file="$(find warehousebot_simulation)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
@@ -18,16 +20,16 @@
         <param name="controller_patience" value="15.0" />
     </node>
 
-    <node name="map_server" pkg="map_server" type="map_server" args="$(find warehousebot_simulation)/maps/carto_map.yaml" output="screen">
+    <!-- <node name="map_server" pkg="map_server" type="map_server" args="$(find warehousebot_simulation)/maps/new2.yaml" output="screen">
         <param name="frame_id" value="map"/>
-    </node>
+    </node> 
 
     <node pkg="amcl" type="amcl" name="amcl" output="screen">
         <rosparam file="$(find warehousebot_simulation)/config/amcl_params.yaml" command="load" />
         <param name="initial_pose_x" value="2"/>
         <param name="initial_pose_y" value="2"/>
         <param name="initial_pose_a" value="0"/>
-    </node>
+    </node> -->
 
     <!--change rviz filename-->
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find warehousebot_simulation)/rviz/sim.rviz"/> 

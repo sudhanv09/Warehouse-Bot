@@ -1,12 +1,5 @@
 <launch>
-<<<<<<< HEAD
-=======
-
-    <include file="$(find warehousebot_stm32)/launch/controller_setup.launch" />
-    <include file="$(find warehousebot_description)/launch/display.launch" />
-    <include file="$(find rplidar_ros)/launch/rplidar.launch" />
->>>>>>> ccae314afd81b335f42308637f435e0dd88684e8
-    
+ 
 <!-- Hector Node -->    
 
     <!-- <include file="$(find hector_mapping)/launch/mapping_default.launch">
@@ -16,26 +9,30 @@
     </include>
 
     <include file="$(find hector_geotiff)/launch/geotiff_mapper.launch">
-        <arg name="trajectory_source_frame_name" value="scanmatcher_frame"/>
+        <arg name="trajectory_source_frame_name" value="/odom"/>
+        <param name="source_frame_name" type="string" value="/base_link" />
+        <param name="trajectory_update_rate" value="10" />
+        <param name="trajectory_publish_rate" value="10" />
         <arg name="map_file_path" value="$(find warehousebot_simulation)/map"/>
     </include>
 
-<<<<<<< HEAD
-    <node name="map_server" pkg="map_server" type="map_server" args="$(find warehousebot_simulation)/maps/mymap.yaml" output="screen">
-        <param name="frame_id" value="map"/>
+    <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="trajectory_node">
+        <param name="target_frame_name" type="string" value="odom" />
+        <param name="source_frame_name" type="string" value="base_link" />
+        <param name="trajectory_update_rate" value="10" />
+        <param name="trajectory_publish_rate" value="10" />
     </node> -->
-
 
 <!-- Cartographer Node-->
 
     <node pkg="cartographer_ros" type="cartographer_node" name="cartographer_node" args="-configuration_directory $(find warehousebot_simulation)/config
               -configuration_basename carto_config.lua" output="screen">
-        <remap from="/imu" to="/flat_imu"/>
     </node>
 
     <node pkg="cartographer_ros" type="cartographer_occupancy_grid_node" name="cartographer_occupancy_grid_node" args="-resolution 0.05" />
+    
+    
+    <!-- <node pkg="tf" type="static_transform_publisher" name="base_link_laser_broadcaster" args="0 0 0 0 0 0 base_link laser 100"/> -->
+
 </launch>
-=======
-    <node pkg="tf" type="static_transform_publisher" name="base_link_laser_broadcaster" args="0 0 0 0 0 0 base_link laser 100"/>
-</launch>
->>>>>>> ccae314afd81b335f42308637f435e0dd88684e8
+

@@ -1,14 +1,14 @@
 <launch>
 
-    <arg name="teleop" default="false"/>
+    <arg name="teleop" default="true"/>
 
-    <group if="$(arg foo)">
+    <group if="$(arg teleop)">
         <include file="$(find warehousebot_simulation)/launch/teleop.launch" />
         <include file="$(find warehousebot_description)/launch/display.launch" />
         <include file="$(find rplidar_ros)/launch/rplidar.launch" />
     </group>
 
-    <include file="$(find warehousebot_stm32)/launch/controller_setup.launch.launch" />
+    <include file="$(find warehousebot_stm32)/launch/controller_setup.launch" />
     <include file="$(find warehousebot_description)/launch/display.launch" />
     <include file="$(find rplidar_ros)/launch/rplidar.launch" />
 
